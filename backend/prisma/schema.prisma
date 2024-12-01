@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id     Int    @id @default(autoincrement())
+  wallet String @unique
+  stake  Float  @default(0)
+  reward Float  @default(0)
+}
+
+model Statistics {
+  id           Int   @id @default(autoincrement())
+  totalStaked  Float @default(0)
+  totalRewards Float @default(0)
+  totalUsers   Int   @default(0)
+}
